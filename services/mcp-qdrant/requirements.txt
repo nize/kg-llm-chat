@@ -1,0 +1,6 @@
+# mirror the repo's requirements; adjust if they change upstream
+qdrant-client>=1.9.0
+openai>=1.40.0
+python-dotenv>=1.0.1
+pydantic>=2.7.0
+mcp>=0.1.0

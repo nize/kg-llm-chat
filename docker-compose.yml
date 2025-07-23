@@ -1,0 +1,60 @@
+services:
+  librechat:
+    image: librechat/librechat:latest    # or build from ./services/librechat
+    volumes:
+      - ./config/librechat.yaml:/app/librechat.yaml:ro
+    environment:
+      ENDPOINTS: "openai,agents"
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    depends_on:
+      - mcp-graphdb
+      - mcp-qdrant
+    networks: [kgnet]
+
+  graphdb:
+    image: ontotext/graphdb:11.0.2
+    ports:
+      - "7200:7200"
+    volumes:
+      #- ./data/graphdb:/opt/graphdb/home
+      - graphdb_data:/opt/graphdb/home
+    networks: [kgnet]
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"     # REST API
+      - "6334:6334"     # gRPC (optional)
+    volumes:
+      - qdrant_data:/qdrant/storage
+      #- ./data/qdrant:/qdrant/storage
+    networks: [kgnet]
+
+  mcp-graphdb:
+    build: ./services/mcp-graphdb
+    environment:
+      GRAPHDB_URL: http://graphdb:7200         # internal Docker hostname
+      GRAPHDB_REPOSITORY: kg-llm
+      PORT: 8080
+    expose:
+      - "8080"
+    networks: [kgnet]
+
+  mcp-qdrant:
+    build: ./services/mcp-qdrant
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_API_KEY: ${QDRANT_API_KEY}
+      PORT: 8080
+    expose:
+      - "8080"
+    networks: [kgnet]
+
+networks:
+  kgnet:
+    driver: bridge
+
+volumes:
+  graphdb_data:
+  qdrant_data:

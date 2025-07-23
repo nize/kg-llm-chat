@@ -1,0 +1,11 @@
+mcpServers:
+  graphdb:
+    type: streamable-http
+    url: "http://mcp-graphdb:8080/mcp"
+    timeout: 300000
+    initTimeout: 60000
+  qdrant:
+    type: streamable-http
+    url: "http://mcp-qdrant:8080/mcp"
+    timeout: 300000
+    initTimeout: 60000
