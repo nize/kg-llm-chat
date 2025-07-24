@@ -105,4 +105,8 @@ networks:
 
 volumes:
   graphdb_data:
+    external: true
+    name: kg-llm-demo-backend_graphdb_data
   qdrant_data:
+    external: true
+    name: kg-llm-demo-backend_qdrant_data
