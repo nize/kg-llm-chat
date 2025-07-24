@@ -1,15 +1,63 @@
 services:
+  mongo:
+    image: mongo:6.0
+    command: ["--replSet=rs0","--bind_ip_all"]
+    volumes:
+      - ./data/mongo:/data/db
+    networks: [kgnet]
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --eval 'db.runCommand({ ping: 1 })' || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  mongo-init:
+    image: mongo:6.0
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks: [kgnet]
+    volumes:
+      - ./scripts/mongo-init.sh:/scripts/mongo-init.sh:ro
+    entrypoint: ["bash", "/scripts/mongo-init.sh"]
+    restart: "no"   # should run once and exit 0
+
+  redis:
+    image: redis:7-alpine
+    networks: [kgnet]
+
   librechat:
-    image: librechat/librechat:latest    # or build from ./services/librechat
+    image: librechat/librechat:latest
+    ports:
+      - "3080:3080"
+    depends_on:
+      mongo-init:
+        condition: service_completed_successfully
+      redis:
+        condition: service_started
+      mcp-graphdb:
+        condition: service_started
+      mcp-qdrant:
+        condition: service_started
+    environment:
+      MONGO_URI: ${MONGO_URI}
+      MONGO_URI_TEST: ${MONGO_URI_TEST}
+      REDIS_URI: ${REDIS_URI}
+      SESSION_REDIS_URI: ${SESSION_REDIS_URI:-${REDIS_URI}}
+      RATE_LIMIT_REDIS_URI: ${RATE_LIMIT_REDIS_URI:-${REDIS_URI}}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+      #ENDPOINTS: ${ENDPOINTS}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ALLOW_REGISTRATION: ${ALLOW_REGISTRATION:-true}
+      ALLOW_EMAIL_LOGIN: ${ALLOW_EMAIL_LOGIN:-true}
+      OPENAI_MODELS: gpt-4o,gpt-4o-mini
+
     volumes:
       - ./config/librechat.yaml:/app/librechat.yaml:ro
-    environment:
-      ENDPOINTS: "openai,agents"
-      OPENAI_API_KEY: ${OPENAI_API_KEY}
-    depends_on:
-      - mcp-graphdb
-      - mcp-qdrant
     networks: [kgnet]
+
 
   graphdb:
     image: ontotext/graphdb:11.0.2

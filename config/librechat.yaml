@@ -1,3 +1,11 @@
+version: "1.0"
+
+# Cache settings: Set to true to enable caching
+cache: true
+
+registration:
+  socialLogins: ['github', 'google', 'discord', 'openid', 'facebook', 'apple', 'saml']
+
 mcpServers:
   graphdb:
     type: streamable-http
@@ -9,3 +17,19 @@ mcpServers:
     url: "http://mcp-qdrant:8080/mcp"
     timeout: 300000
     initTimeout: 60000
+
+interface:
+  customWelcome: "Welcome to Knowledge Graph-powered Chat! Enjoy your experience."
+  # MCP Servers UI configuration
+  mcpServers:
+    placeholder: 'MCP Servers'
+  
+  endpointsMenu: true
+  modelSelect: true
+  parameters: true
+  sidePanel: true
+  presets: true
+  prompts: true
+  bookmarks: true
+  multiConvo: true
+  agents: false
