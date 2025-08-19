@@ -50,9 +50,11 @@ services:
       ENCRYPTION_KEY: ${ENCRYPTION_KEY}
       #ENDPOINTS: ${ENDPOINTS}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
       ALLOW_REGISTRATION: ${ALLOW_REGISTRATION:-true}
       ALLOW_EMAIL_LOGIN: ${ALLOW_EMAIL_LOGIN:-true}
-      OPENAI_MODELS: gpt-4o,gpt-4o-mini
+      OPENAI_MODELS: gpt-5,gpt-5-mini,gpt-5-nano,gpt-4o,gpt-4o-mini,o3,o4-mini,gpt-4.1-2025-04-14
+      ANTHROPIC_MODELS: claude-sonnet-4-20250514,claude-opus-4-20250514,claude-opus-4-1-20250805
 
     volumes:
       - ./config/librechat.yaml:/app/librechat.yaml:ro
