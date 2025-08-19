@@ -1,0 +1,393 @@
+###############################################################################
+# ACME BANKING EXTENSION OF FIBO – RESULTATPOSTER
+# Named graph: http://acme.com/graph/acme-ontology
+###############################################################################
+
+@prefix acmeOnt:    <http://acme.com/ontology#> .
+@prefix fibo-fnd-ae:<https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/> .
+@prefix fibo-fbc-dt:<https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
+@prefix fibo-fbc-fee:<https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Payments/Fees/> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix cmns-av:      <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
+@prefix cmns-qtu:     <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix p-plan:       <http://purl.org/net/p-plan#> .
+@prefix qudt:         <http://qudt.org/schema/qudt/> .
+@prefix unit:         <http://qudt.org/vocab/unit/> .
+
+###############################################################################
+# Ontology header
+###############################################################################
+
+<http://acme.com/graph/acme-ontology>
+    a owl:Ontology ;
+    owl:versionIRI <http://acme.com/graph/acme-ontology/2025-08-05> ;
+    rdfs:label "ACME banking result ontology"@en , "ACME – resultatrad-ontologi"@sv ;
+    owl:imports
+        <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/> ,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> ,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Payments/Fees/> ,
+        <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> ,
+        <http://purl.org/net/p-plan#> .
+
+###############################################################################
+# Datatype properties for formulas / symbols
+###############################################################################
+
+acmeOnt:hasMathMLExpression
+    a owl:DatatypeProperty ;
+    rdfs:label "has MathML expression"@en ;
+    rdfs:range rdf:XMLLiteral ;
+    rdfs:comment "Canonical MathML for a formula (kept on the step to avoid duplication)."@en .
+
+acmeOnt:hasLaTeXSymbol
+    a owl:DatatypeProperty ;
+    rdfs:label "has LaTeX symbol"@en ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A display symbol in LaTeX syntax, e.g., R, \\mathrm{COGS}, f_{\\mathrm{GPM}}."@en .
+
+###############################################################################
+# Grundläggande kostnads-klass (saknas i FIBO)
+###############################################################################
+
+acmeOnt:Expense
+    a owl:Class ;
+    rdfs:subClassOf fibo-fnd-ae:Income ;      # model the sign separately (Expense is negative Income)
+    rdfs:label "Expense"@en , "Kostnad"@sv ;
+    skos:definition "outflow or consumption of economic benefits during the accounting period"@en ;
+    cmns-av:explanatoryNote "Positive numeric values represent a cost; negative values represent a reversal (expense reduction) and thus increase profit."@en .
+
+###############################################################################
+# Nettoräntenetto
+###############################################################################
+
+acmeOnt:NetInterestIncome
+    a owl:Class ;
+    rdfs:subClassOf fibo-fnd-ae:Income ;
+    rdfs:label "Net interest income"@en , "Räntenetto"@sv ;
+    skos:definition "interest income minus interest expense recognised in profit or loss during the period"@en ;
+    skos:broader fibo-fnd-ae:Income ;
+    skos:related fibo-fbc-dt:Interest .
+
+###############################################################################
+# Provisionsnetto (netto avgifts- och provisionsintäkter)
+###############################################################################
+
+acmeOnt:NetFeeAndCommissionIncome
+    a owl:Class ;
+    rdfs:subClassOf fibo-fnd-ae:Income ;
+    rdfs:label "Net fee and commission income"@en , "Provisionsnetto"@sv ;
+    skos:definition "fee and commission income minus related fee and commission expense"@en ;
+    skos:broader fibo-fnd-ae:Income ;
+    skos:related fibo-fbc-fee:Fee .
+
+###############################################################################
+# Summa intäkter
+###############################################################################
+
+acmeOnt:TotalRevenue
+    a owl:Class ;
+    rdfs:subClassOf fibo-fnd-ae:Income ;
+    rdfs:label "Total revenue"@en , "Summa intäkter"@sv ;
+    skos:definition "aggregate of all revenue items reported in the period"@en .
+
+###############################################################################
+# Summa kostnader
+###############################################################################
+
+acmeOnt:TotalExpense
+    a owl:Class ;
+    rdfs:subClassOf acmeOnt:Expense ;
+    rdfs:label "Total expense"@en , "Summa kostnader"@sv ;
+    skos:definition "aggregate of all expense items recognised in the period"@en .
+
+###############################################################################
+# Resultat före kreditförluster
+###############################################################################
+
+acmeOnt:OperatingIncomeBeforeCreditLoss
+    a owl:Class ;
+    rdfs:subClassOf fibo-fnd-ae:Income ;
+    rdfs:label "Operating income before credit losses"@en ,
+               "Resultat före kreditförluster"@sv ;
+    skos:definition "operating income calculated before recognising net credit losses"@en .
+
+###############################################################################
+# Kreditförluster, netto
+###############################################################################
+
+acmeOnt:CreditLossNet
+    a owl:Class ;
+    rdfs:subClassOf acmeOnt:Expense ;
+    rdfs:label "Credit losses, net"@en , "Kreditförluster, netto"@sv ;
+    skos:definition "net amount of expected-credit-loss expense or reversal recognised during the period"@en ;
+    cmns-av:explanatoryNote "A positive value represents a loss (cost).  A negative value represents a gain due to reversal of previously recognised losses (‘negative credit loss’ in management commentary)."@en .
+
+###############################################################################
+# Rörelseresultat
+###############################################################################
+
+acmeOnt:OperatingIncome
+    a owl:Class ;
+    rdfs:subClassOf fibo-fnd-ae:Income ;
+    rdfs:label "Operating income"@en , "Rörelseresultat"@sv ;
+    skos:definition "profit or loss from ordinary activities after credit losses but before tax"@en ;
+    skos:exactMatch <https://www.wikidata.org/entity/Q834331> .   # operating income in Wikidata
+
+###############################################################################
+# Additions for ratios and operands
+###############################################################################
+
+# Direct cost of sales needed for Gross Profit (don’t use TotalExpense here)
+acmeOnt:CostOfSales
+    a owl:Class ;
+    rdfs:subClassOf acmeOnt:Expense ;
+    rdfs:label "Cost of sales"@en , "Kostnad för sålda varor/tjänster"@sv ;
+    cmns-av:explanatoryNote "Costs directly attributable to generating revenue; used for Gross Profit."@en .
+
+# Gross Profit concept
+acmeOnt:GrossProfit
+    a owl:Class ;
+    rdfs:subClassOf fibo-fnd-ae:Income ;
+    rdfs:label "Gross profit"@en , "Bruttovinst"@sv ;
+    cmns-av:explanatoryNote "TotalRevenue minus CostOfSales."@en .
+
+# Quantity kind for the Gross Profit Margin (dimensionless)
+acmeOnt:GrossProfitMarginKind
+    a owl:Class ;
+    rdfs:subClassOf cmns-qtu:DimensionlessQuantity ;
+    rdfs:label "Gross profit margin"@en , "Bruttovinstmarginal"@sv ;
+    # Preferred display unit (from QUDT catalog)
+    cmns-qtu:hasMeasurementUnit unit:PERCENT ;
+    acmeOnt:hasLaTeXSymbol "\\mathrm{GPM}" .
+
+###############################################################################
+# Design-time Plan + Steps (P-Plan)
+###############################################################################
+
+acmeOnt:FinancialRatiosPlan
+    a p-plan:Plan ;
+    rdfs:label "Financial ratios plan"@en .
+
+# Step 1: Compute Gross Profit = TotalRevenue - CostOfSales
+acmeOnt:ComputeGrossProfitStep
+    a p-plan:Step ;
+    p-plan:isStepOfPlan acmeOnt:FinancialRatiosPlan ;
+    p-plan:hasInputVar  acmeOnt:revVar , acmeOnt:cogsVar ;
+    p-plan:hasOutputVar acmeOnt:gpVar ;
+    acmeOnt:hasLaTeXSymbol "f_{\\mathrm{GP}}" ;
+    acmeOnt:hasMathMLExpression """
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mrow>
+          <mi>f</mi><mo>_</mo><mi>GP</mi>
+          <mo>(</mo><mi>R</mi><mo>,</mo><mi>COGS</mi><mo>)</mo>
+          <mo>=</mo>
+          <mi>R</mi><mo>−</mo><mi>COGS</mi>
+        </mrow>
+      </math>
+    """^^rdf:XMLLiteral .
+
+# Step 2: Compute Gross Profit Margin = GrossProfit / TotalRevenue
+acmeOnt:ComputeGrossProfitMarginStep
+    a p-plan:Step ;
+    p-plan:isStepOfPlan acmeOnt:FinancialRatiosPlan ;
+    p-plan:hasInputVar  acmeOnt:gpVar , acmeOnt:revVar ;
+    p-plan:hasOutputVar acmeOnt:gpmVar ;
+    acmeOnt:hasLaTeXSymbol "f_{\\mathrm{GPM}}" ;
+    acmeOnt:hasMathMLExpression """
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mrow>
+          <mi>f</mi><mo>_</mo><mi>GPM</mi>
+          <mo>(</mo><mi>GP</mi><mo>,</mo><mi>R</mi><mo>)</mo>
+          <mo>=</mo>
+          <mfrac><mi>GP</mi><mi>R</mi></mfrac>
+        </mrow>
+      </math>
+    """^^rdf:XMLLiteral .
+
+###############################################################################
+# Variables (individuals) used by the steps
+#  - typed to your existing concept classes
+#  - carry LaTeX symbols only (no duplicate notations)
+###############################################################################
+
+acmeOnt:revVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:TotalRevenue ;
+    rdfs:label "revenue (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "R" .
+
+acmeOnt:cogsVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:CostOfSales ;
+    rdfs:label "cost of sales (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "\\mathrm{COGS}" .
+
+acmeOnt:gpVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:GrossProfit ;
+    rdfs:label "gross profit (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "\\mathrm{GP}" .
+
+acmeOnt:gpmVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:GrossProfitMarginKind ;
+    rdfs:label "gross profit margin (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "\\mathrm{GPM}" .
+
+###############################################################################
+# ADDITIONS: Efficiency ratio (Cost-to-Income) for banks
+# Drop-in snippet for http://acme.com/graph/acme-ontology
+###############################################################################
+
+
+###############################################################################
+# Operating expense concept (numerator)
+###############################################################################
+
+acmeOnt:OperatingExpense
+    a owl:Class ;
+    rdfs:subClassOf acmeOnt:Expense ;
+    rdfs:label "Operating expense"@en , "Rörelsekostnad"@sv ;
+    skos:definition "operating expenses incurred to run the bank's business, excluding credit losses and tax"@en ;
+    cmns-av:explanatoryNote "Used as the numerator in the cost-to-income ratio; typically includes staff, IT, premises and other administrative costs. Excludes credit losses and tax by definition."@en ;
+    owl:disjointWith acmeOnt:CreditLossNet .
+
+###############################################################################
+# Tax expense concept (separate from operating expense and credit losses)
+###############################################################################
+
+acmeOnt:TaxExpense
+    a owl:Class ;
+    rdfs:subClassOf acmeOnt:Expense ;
+    rdfs:label "Tax expense"@en , "Skatt"@sv ;
+    skos:definition "income tax expense recognised in profit or loss for the period"@en ;
+    cmns-av:explanatoryNote "Excluded from OperatingExpense and appears below operating income in the statement of profit or loss."@en ;
+    owl:disjointWith acmeOnt:OperatingExpense , acmeOnt:CreditLossNet .
+
+###############################################################################
+# Government fees concept (statliga avgifter)
+###############################################################################
+
+acmeOnt:GovernmentFees
+    a owl:Class ;
+    rdfs:subClassOf acmeOnt:Expense ;
+    rdfs:label "Government fees"@en , "Statliga avgifter"@sv ;
+    skos:definition "levies and charges imposed by public authorities, such as bank tax and resolution fees, recognised in the period"@en ;
+    cmns-av:explanatoryNote "Excluded from OperatingExpense (Summa kostnader) and presented below operating income; used explicitly in the OPEX derivation."@en ;
+    owl:disjointWith acmeOnt:OperatingExpense , acmeOnt:CreditLossNet , acmeOnt:TaxExpense .
+
+###############################################################################
+# Efficiency ratio quantity kind (dimensionless, in percent)
+###############################################################################
+
+acmeOnt:EfficiencyRatioKind
+    a owl:Class ;
+    rdfs:subClassOf cmns-qtu:Ratio ;
+    rdfs:label "Cost-to-income ratio"@en , "Effektivitetskvot (K/I-tal)"@sv ;
+    skos:definition "operating expenses divided by total income for the period"@en ;
+    cmns-av:explanatoryNote "Lower values indicate higher operating efficiency."@en ;
+    cmns-qtu:hasMeasurementUnit unit:PERCENT ;
+    acmeOnt:hasLaTeXSymbol "\\mathrm{CIR}" .
+
+###############################################################################
+# P-Plan step: compute Efficiency Ratio = OperatingExpense / TotalRevenue
+# (Denominator uses your existing acmeOnt:TotalRevenue = "Summa intäkter")
+###############################################################################
+
+acmeOnt:ComputeEfficiencyRatioStep
+    a p-plan:Step ;
+    p-plan:isStepOfPlan acmeOnt:FinancialRatiosPlan ;
+    p-plan:hasInputVar  acmeOnt:opexVar , acmeOnt:revVar ;
+    p-plan:hasOutputVar acmeOnt:cirVar ;
+    acmeOnt:hasLaTeXSymbol "f_{\\mathrm{CIR}}" ;
+    acmeOnt:hasMathMLExpression """
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mrow>
+          <mi>f</mi><mo>_</mo><mi>CIR</mi>
+          <mo>(</mo><mi>OPEX</mi><mo>,</mo><mi>R</mi><mo>)</mo>
+          <mo>=</mo>
+          <mfrac><mi>OPEX</mi><mi>R</mi></mfrac>
+        </mrow>
+      </math>
+    """^^rdf:XMLLiteral .
+
+###############################################################################
+# Variables for the efficiency ratio (follow same pattern as GPM variables)
+###############################################################################
+
+acmeOnt:opexVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:OperatingExpense ;
+    rdfs:label "operating expense (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "\\mathrm{OPEX}" .
+
+acmeOnt:cirVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:EfficiencyRatioKind ;
+    rdfs:label "cost-to-income ratio (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "\\mathrm{CIR}" .
+
+
+
+
+###############################################################################
+# P-Plan: derive OperatingExpense from existing concepts present today
+###############################################################################
+
+# Exact decomposition from your high-level TotalExpense concept:
+#   OPEX = TotalExpense − CreditLossNet − TaxExpense − GovernmentFees
+# This matches the presentation where Summa kostnader excludes credit losses,
+# government fees and tax.
+
+acmeOnt:ComputeOperatingExpenseStep
+    a p-plan:Step ;
+    p-plan:isStepOfPlan acmeOnt:FinancialRatiosPlan ;
+    p-plan:hasInputVar  acmeOnt:totalExpVar , acmeOnt:creditLossVar , acmeOnt:taxVar , acmeOnt:govFeesVar ;
+    p-plan:hasOutputVar acmeOnt:opexVar ;
+    acmeOnt:hasLaTeXSymbol "f_{\mathrm{OPEX}}" ;
+    cmns-av:explanatoryNote "OperatingExpense is derived by subtracting credit losses, tax expense and government fees from the aggregate of all expenses recognised in the period."@en ;
+    acmeOnt:hasMathMLExpression """
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mrow>
+          <mi>f</mi><mo>_</mo><mi>OPEX</mi>
+          <mo>(</mo><mi>E</mi><mo>,</mo><mi>CL</mi><mo>,</mo><mi>T</mi><mo>,</mo><mi>GF</mi><mo>)</mo>
+          <mo>=</mo>
+          <mi>E</mi><mo>−</mo><mi>CL</mi><mo>−</mo><mi>T</mi><mo>−</mo><mi>GF</mi>
+        </mrow>
+      </math>
+    """^^rdf:XMLLiteral .
+
+acmeOnt:totalExpVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:TotalExpense ;
+    rdfs:label "total expense (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "E" .
+
+acmeOnt:creditLossVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:CreditLossNet ;
+    rdfs:label "credit losses, net (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "CL" .
+
+acmeOnt:taxVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:TaxExpense ;
+    rdfs:label "tax expense (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "T" .
+
+acmeOnt:govFeesVar
+    a p-plan:Variable ;
+    dct:subject acmeOnt:GovernmentFees ;
+    rdfs:label "government fees (variable)"@en ;
+    acmeOnt:hasLaTeXSymbol "GF" .
+
+###############################################################################
+
+
+###############################################################################
+# Slut på filen
+###############################################################################

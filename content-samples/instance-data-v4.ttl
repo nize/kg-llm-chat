@@ -1,0 +1,271 @@
+###############################################################################
+# ACME – Handelsbanken Q1–Q2 2025 Result Items
+# Graph: http://acme.com/graph/instance-data
+###############################################################################
+
+@prefix acmeOnt:  <http://acme.com/ontology#> .
+@prefix ex:       <http://acme.com/finrep/2025/> .
+@prefix gleif:    <https://rdf.gleif.org/L1/> .
+@prefix fibo-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/> .
+@prefix fibo-doc: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/> .
+@prefix fibo-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/> .
+@prefix fibo-code:<https://www.omg.org/spec/Commons/CurrencyIdentifier/> .
+@prefix commons:  <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+
+###############################################################################
+# Reporting periods
+###############################################################################
+
+ex:Period_2025_Q1
+    a fibo-doc:ReportingPeriod ;
+    rdfs:label "2025-Q1"@en ;
+    fibo-doc:hasIntervalDescription "2025-01-01 – 2025-03-31" .
+
+ex:Period_2025_Q2
+    a fibo-doc:ReportingPeriod ;
+    rdfs:label "2025-Q2"@en ;
+    fibo-doc:hasIntervalDescription "2025-04-01 – 2025-06-30" .
+
+###############################################################################
+# Legal entity (GLEIF LEI)
+###############################################################################
+
+gleif:L-NHBDILHZTYCNBV5UYZ31
+    rdfs:label "Svenska Handelsbanken AB"@en .
+
+###############################################################################
+# --------------------------  Q1 2025  ----------------------------------------
+###############################################################################
+
+# Total revenue ---------------------------------------------------------------
+ex:SHB_2025_Q1_TotalRevenue
+    a acmeOnt:TotalRevenue ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q1_TotalRevenue ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q1 .
+
+ex:Amt_SHB_2025_Q1_TotalRevenue
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 14789 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Net interest income ---------------------------------------------------------
+ex:SHB_2025_Q1_NetInterestIncome
+    a acmeOnt:NetInterestIncome ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q1_NetInterestIncome ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q1 .
+
+ex:Amt_SHB_2025_Q1_NetInterestIncome
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 11347 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Net fee and commission income ----------------------------------------------
+ex:SHB_2025_Q1_NetFeeAndCommissionIncome
+    a acmeOnt:NetFeeAndCommissionIncome ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q1_NetFeeComm ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q1 .
+
+ex:Amt_SHB_2025_Q1_NetFeeComm
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 2900 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Total expense ---------------------------------------------------------------
+ex:SHB_2025_Q1_OperatingExpense
+    a acmeOnt:OperatingExpense ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q1_OperatingExpense ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q1 .
+
+ex:Amt_SHB_2025_Q1_OperatingExpense
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 6025 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Operating income before credit loss -----------------------------------------
+ex:SHB_2025_Q1_OperIncBeforeCL
+    a acmeOnt:OperatingIncomeBeforeCreditLoss ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q1_OperIncBeforeCL ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q1 .
+
+ex:Amt_SHB_2025_Q1_OperIncBeforeCL
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 8764 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Credit losses, net  (negative value) ----------------------------------------
+ex:SHB_2025_Q1_CreditLossNet
+    a acmeOnt:CreditLossNet ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q1_CreditLossNet ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q1 .
+
+ex:Amt_SHB_2025_Q1_CreditLossNet
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue -54 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Operating income ------------------------------------------------------------
+ex:SHB_2025_Q1_OperatingIncome
+    a acmeOnt:OperatingIncome ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q1_OperatingIncome ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q1 .
+
+ex:Amt_SHB_2025_Q1_OperatingIncome
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 8136 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+###############################################################################
+# --------------------------  Q2 2025  ----------------------------------------
+###############################################################################
+
+# Total revenue ---------------------------------------------------------------
+ex:SHB_2025_Q2_TotalRevenue
+    a acmeOnt:TotalRevenue ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q2_TotalRevenue ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q2 .
+
+ex:Amt_SHB_2025_Q2_TotalRevenue
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 13624 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Net interest income ---------------------------------------------------------
+ex:SHB_2025_Q2_NetInterestIncome
+    a acmeOnt:NetInterestIncome ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q2_NetInterestIncome ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q2 .
+
+ex:Amt_SHB_2025_Q2_NetInterestIncome
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 10689 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Net fee and commission income ----------------------------------------------
+ex:SHB_2025_Q2_NetFeeAndCommissionIncome
+    a acmeOnt:NetFeeAndCommissionIncome ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q2_NetFeeComm ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q2 .
+
+ex:Amt_SHB_2025_Q2_NetFeeComm
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 2866 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Total expense ---------------------------------------------------------------
+ex:SHB_2025_Q2_OperatingExpense
+    a acmeOnt:OperatingExpense ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q2_OperatingExpense ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q2 .
+
+ex:Amt_SHB_2025_Q2_OperatingExpense
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 6017 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Operating income before credit loss -----------------------------------------
+ex:SHB_2025_Q2_OperIncBeforeCL
+    a acmeOnt:OperatingIncomeBeforeCreditLoss ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q2_OperIncBeforeCL ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q2 .
+
+ex:Amt_SHB_2025_Q2_OperIncBeforeCL
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 7607 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Credit losses, net  (negative value) ----------------------------------------
+ex:SHB_2025_Q2_CreditLossNet
+    a acmeOnt:CreditLossNet ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q2_CreditLossNet ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q2 .
+
+ex:Amt_SHB_2025_Q2_CreditLossNet
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue -219 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Operating income ------------------------------------------------------------
+ex:SHB_2025_Q2_OperatingIncome
+    a acmeOnt:OperatingIncome ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q2_OperatingIncome ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q2 .
+
+ex:Amt_SHB_2025_Q2_OperatingIncome
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 7164 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+###############################################################################
+# Reuse existing reporting period and entity from your file
+#   ex:Period_2025_Q2
+#   gleif:L-NHBDILHZTYCNBV5UYZ31  (Svenska Handelsbanken AB)
+###############################################################################
+
+# Government fees (Statliga avgifter) – Q2 2025
+# Source figure in report (Q2 column): -664 mkr → stored as +664 (cost)
+ex:SHB_2025_Q2_GovernmentFees
+    a acmeOnt:GovernmentFees ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q2_GovernmentFees ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q2 .
+
+ex:Amt_SHB_2025_Q2_GovernmentFees
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 664 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+# Tax expense (Skatter) – Q2 2025
+# Source figure in report (Q2 column): -1 624 mkr → stored as +1 624 (cost)
+ex:SHB_2025_Q2_TaxExpense
+    a acmeOnt:TaxExpense ;
+    fibo-cur:hasMonetaryAmount ex:Amt_SHB_2025_Q2_TaxExpense ;
+    fibo-rel:isProducedBy      gleif:L-NHBDILHZTYCNBV5UYZ31 ;
+    fibo-doc:hasReportingPeriod ex:Period_2025_Q2 .
+
+ex:Amt_SHB_2025_Q2_TaxExpense
+    a fibo-cur:MonetaryAmount ;
+    commons:hasNumericValue 1624 ;
+    commons:hasFactorValue  6 ;
+    fibo-cur:hasCurrency    fibo-code:SEK .
+
+###############################################################################
+# Notes
+# - Sign convention matches your TBox: positive numeric values represent a cost
+#   (expenses are positive), reversals would be negative.
+# - FactorValue 6 ⇒ values are in millions of SEK.
+###############################################################################
+
+###############################################################################
+# End of file
+###############################################################################
