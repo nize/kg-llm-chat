@@ -19,7 +19,7 @@ mcpServers:
     initTimeout: 60000
 
 interface:
-  customWelcome: "Welcome to Knowledge Graph-powered Chat! Enjoy your experience."
+  customWelcome: "Ask the Knowledge Graph!"
   # MCP Servers UI configuration
   mcpServers:
     placeholder: 'MCP Servers'
@@ -32,4 +32,10 @@ interface:
   prompts: true
   bookmarks: true
   multiConvo: true
-  agents: false
+  agents: true
+
+# endpoints:
+#   openAI:
+#     addParams:
+#       stream: false
+#       parallel_tool_calls: false
