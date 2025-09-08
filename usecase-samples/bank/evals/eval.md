@@ -27,11 +27,11 @@ Hur kommer det sig att resultatet sjönk?
 
 
 ## Eval runs
-| RunID | UserQuestion | SystemPrompt | Model                    | Temp | Thinking | ThinkingBudget | G   | F   | T   | TU  | P   | L   | Tot | Comment    |
+| RunID | Input | SysPrompt | Model                    | Temp | Thinking | TBudget | G   | F   | T   | TU  | P   | L   | Tot | Comment    |
 | :---- | :----------- | :----------- | :----------------------- | :--- | :------- | :------------- | :-- | :-- | :-- | :-- | :-- | --- | :-- | --- |
 | 001   | UQ01         | SP04         | claude-sonnet-4-20250514 | 1.0  | true     | 2000           | 2   | 2   | 1   | 1   | 1   | 1   |  8  | Unclear what all tool calls do in presentation. A bit unnescessary info in answer. Seems to fail multiple tool calls.    |
-| 002   | UQ01         | SP05         | claude-sonnet-4-20250514 | 1.0  | true     | 2000           | 2   | 2   | 1.5 | 1.5 | 2   | 1.5 |  10.5  | Not so clear how it has interacted with the tool. No good use of qdrant.    |
-| 003   | UQ01         | SP06         | claude-sonnet-4-20250514 | 1.0  | true     | 2000           | 2   | 2   | 2 | 1 | 2   | 1  | 10   | No good use of qdrant.    |
+| 002   | UQ01         | SP05         | claude-sonnet-4-20250514 | 1.0  | true     | 2000           | 2   | 2   | 1.5 | 1.5 | 2   | 1.5 |  10.5  | Not so clear how it has interacted with the tool. No efficient use of qdrant.    |
+| 003   | UQ01         | SP06         | claude-sonnet-4-20250514 | 1.0  | true     | 2000           | 2   | 2   | 2 | 1 | 2   | 1  | 10   | No efficient use of qdrant.    |
 
 
 ## System prompts
