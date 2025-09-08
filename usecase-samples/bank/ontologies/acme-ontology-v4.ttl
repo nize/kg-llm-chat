@@ -6,12 +6,13 @@
 @prefix acmeOnt:    <http://acme.com/ontology#> .
 @prefix fibo-fnd-ae:<https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/> .
 @prefix fibo-fbc-dt:<https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> .
-@prefix fibo-fbc-fee:<https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Payments/Fees/> .
+@prefix fibo-fbc-pas-caa: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> .
 @prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
 @prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:        <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix cmns-av:      <https://www.omg.org/spec/Commons/AnnotationVocabulary/> .
 @prefix cmns-qtu:     <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> .
 @prefix p-plan:       <http://purl.org/net/p-plan#> .
@@ -29,7 +30,7 @@
     owl:imports
         <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/> ,
         <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/> ,
-        <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Payments/Fees/> ,
+        <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/ClientsAndAccounts/> ,
         <https://www.omg.org/spec/Commons/QuantitiesAndUnits/> ,
         <http://purl.org/net/p-plan#> .
 
@@ -82,7 +83,7 @@ acmeOnt:NetFeeAndCommissionIncome
     rdfs:label "Net fee and commission income"@en , "Provisionsnetto"@sv ;
     skos:definition "fee and commission income minus related fee and commission expense"@en ;
     skos:broader fibo-fnd-ae:Income ;
-    skos:related fibo-fbc-fee:Fee .
+    skos:related fibo-fbc-pas-caa:Fee .
 
 ###############################################################################
 # Summa intäkter
@@ -390,4 +391,102 @@ acmeOnt:govFeesVar
 
 ###############################################################################
 # Slut på filen
+###############################################################################
+###############################################################################
+# LOCAL DERIVED METRICS: Customer business income and share of revenue
+# These are management-defined (non-standard) and require ontology definitions
+# to make their semantics and formulas explicit.
+###############################################################################
+
+###############################################################################
+# Customer business income (NII + NFCI)
+###############################################################################
+
+acmeOnt:CustomerBusinessIncome
+        a owl:Class ;
+        rdfs:subClassOf fibo-fnd-ae:Income ;
+        rdfs:label "Customer business income"@en , "Kundaffärsintäkter"@sv ;
+        skos:definition "sum of net interest income and net fee & commission income, representing recurring customer-driven income"@en ;
+        cmns-av:explanatoryNote "Local definition used for management reporting; excludes trading gains/losses and other non-customer income streams."@en .
+
+###############################################################################
+# Variables for the new metric and its inputs/ratio
+###############################################################################
+
+acmeOnt:niiVar
+        a p-plan:Variable ;
+        dct:subject acmeOnt:NetInterestIncome ;
+        rdfs:label "net interest income (variable)"@en ;
+        acmeOnt:hasLaTeXSymbol "\\mathrm{NII}" .
+
+acmeOnt:nfciVar
+        a p-plan:Variable ;
+        dct:subject acmeOnt:NetFeeAndCommissionIncome ;
+        rdfs:label "net fee and commission income (variable)"@en ;
+        acmeOnt:hasLaTeXSymbol "\\mathrm{NFCI}" .
+
+acmeOnt:cbiVar
+        a p-plan:Variable ;
+        dct:subject acmeOnt:CustomerBusinessIncome ;
+        rdfs:label "customer business income (variable)"@en ;
+        acmeOnt:hasLaTeXSymbol "\\mathrm{CBI}" .
+
+acmeOnt:cisVar
+        a p-plan:Variable ;
+        dct:subject acmeOnt:CustomerIncomeShareKind ;
+        rdfs:label "customer income share (variable)"@en ;
+        acmeOnt:hasLaTeXSymbol "\\mathrm{CIS}" .
+
+###############################################################################
+# P-Plan step: compute CustomerBusinessIncome = NII + NFCI
+###############################################################################
+
+acmeOnt:ComputeCustomerBusinessIncomeStep
+        a p-plan:Step ;
+        p-plan:isStepOfPlan acmeOnt:FinancialRatiosPlan ;
+        p-plan:hasInputVar  acmeOnt:niiVar , acmeOnt:nfciVar ;
+        p-plan:hasOutputVar acmeOnt:cbiVar ;
+        acmeOnt:hasLaTeXSymbol "f_{\\mathrm{CBI}}" ;
+        acmeOnt:hasMathMLExpression """
+            <math xmlns='http://www.w3.org/1998/Math/MathML'>
+                <mrow>
+                    <mi>f</mi><mo>_</mo><mi>CBI</mi>
+                    <mo>(</mo><mi>NII</mi><mo>,</mo><mi>NFCI</mi><mo>)</mo>
+                    <mo>=</mo>
+                    <mi>NII</mi><mo>+</mo><mi>NFCI</mi>
+                </mrow>
+            </math>
+        """^^rdf:XMLLiteral .
+
+###############################################################################
+# Ratio: Customer income share of total revenue (dimensionless, percent)
+###############################################################################
+
+acmeOnt:CustomerIncomeShareKind
+        a owl:Class ;
+        rdfs:subClassOf cmns-qtu:Ratio ;
+        rdfs:label "Customer income share"@en , "Andel kundintäkter"@sv ;
+        skos:definition "customer business income divided by total revenue for the period"@en ;
+        cmns-qtu:hasMeasurementUnit unit:PERCENT ;
+        acmeOnt:hasLaTeXSymbol "\\mathrm{CIS}" .
+
+acmeOnt:ComputeCustomerIncomeShareStep
+        a p-plan:Step ;
+        p-plan:isStepOfPlan acmeOnt:FinancialRatiosPlan ;
+        p-plan:hasInputVar  acmeOnt:cbiVar , acmeOnt:revVar ;
+        p-plan:hasOutputVar acmeOnt:cisVar ;
+        acmeOnt:hasLaTeXSymbol "f_{\\mathrm{CIS}}" ;
+        acmeOnt:hasMathMLExpression """
+            <math xmlns='http://www.w3.org/1998/Math/MathML'>
+                <mrow>
+                    <mi>f</mi><mo>_</mo><mi>CIS</mi>
+                    <mo>(</mo><mi>CBI</mi><mo>,</mo><mi>R</mi><mo>)</mo>
+                    <mo>=</mo>
+                    <mfrac><mi>CBI</mi><mi>R</mi></mfrac>
+                </mrow>
+            </math>
+        """^^rdf:XMLLiteral .
+
+###############################################################################
+# End local derived metrics section
 ###############################################################################

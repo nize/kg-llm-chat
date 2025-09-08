@@ -1,0 +1,2543 @@
+{
+    "_id": "68920433721dc54bbc721d44",
+    "id": "agent_PG-0laChhaLvLaSOrqGX_",
+    "name": "KG Agent (Claude)",
+    "description": "",
+    "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+    "avatar": {
+        "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+        "source": "local"
+    },
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-20250514",
+    "model_parameters": {
+        "temperature": 1,
+        "useResponsesApi": true,
+        "reasoning_summary": "auto",
+        "reasoning_effort": "low",
+        "disableStreaming": false,
+        "resendFiles": false,
+        "verbosity": ""
+    },
+    "artifacts": "",
+    "recursion_limit": 100,
+    "tools": [
+        "sparqlQuery_mcp_graphdb",
+        "query_collection_mcp_qdrant"
+    ],
+    "tool_kwargs": [],
+    "actions": [],
+    "author": "688200f1c590f504d43c00f9",
+    "hide_sequential_outputs": false,
+    "end_after_tools": false,
+    "agent_ids": [],
+    "conversation_starters": [],
+    "projectIds": [],
+    "versions": [
+        {
+            "name": "KG Agent (8/5/25, 13:16)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\"\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "provider": "openAI",
+            "model": "o3",
+            "artifacts": "",
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_3Odpto6eWa-lehqnu1lt9-avatar-1753385795834.png?manual=false",
+                "source": "local"
+            },
+            "end_after_tools": false,
+            "hide_sequential_outputs": false,
+            "model_parameters": {
+                "temperature": 1
+            },
+            "recursion_limit": 50,
+            "id": "agent_PG-0laChhaLvLaSOrqGX_",
+            "actions": [],
+            "createdAt": "2025-08-05T13:16:35.134Z",
+            "updatedAt": "2025-08-05T13:16:35.134Z"
+        },
+        {
+            "name": "KG Agent (8/5/25, 13:16)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_3Odpto6eWa-lehqnu1lt9-avatar-1753385795834.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:32:32.718Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_3Odpto6eWa-lehqnu1lt9-avatar-1753385795834.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:33:50.325Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484064760.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:41:04.767Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484222057.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:43:42.062Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484443934.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:47:23.938Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:53:11.362Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:53:25.807Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part.\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T13:05:40.753Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part.\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T13:10:32.708Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T13:19:26.285Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T13:19:51.893Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:25:07.558Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:29:54.310Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5-mini",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:30:37.864Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 0,
+                "useResponsesApi": true
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:55:34.013Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:55:55.939Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:57:59.616Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5-mini",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:59:31.424Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T08:33:00.773Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-09T16:13:11.342Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-09T16:35:15.098Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-09T16:35:21.115Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T12:54:13.445Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T12:54:28.255Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": true
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T12:58:19.784Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o4-mini",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": true
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T13:05:39.722Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": false,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T13:10:04.345Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\nWhere to look for numeric values\nThere are two standard patterns:\nDirect literal pattern\nClass-individual  →  data-property  →  literal\n\nVariable / p-plan pattern\np-plan:Variable  ← p-plan:hasInputVar / hasOutputVar  ← p-plan:Step\np-plan:Variable  dct:subject  →  Measure-class\nMeasure-class    rdf:type      →  one or more individuals (pattern #1)\n→ Retrieve the numeric literal from those individuals.\n\nRecommended workflow\na. From semantic search, collect candidate IRIs (banks, measures, variables, etc.).\nb. For each candidate IRI, first try pattern #1 with a focused SPARQL query.\nc. If it is a p-plan:Variable, follow dct:subject to the measure-class and apply pattern #1.\nd. Only if the path is unclear, run a shallow property-path or DESCRIBE (≤3 hops) to discover immediate neighbours; avoid large “*” expansions.\n\nAlways ensure that every numeric fact you use is backed by at least one SPARQL result returned in the conversation.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": false,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T18:26:35.092Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": false,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T19:10:42.802Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T19:14:12.247Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": false,
+                "resendFiles": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T11:55:16.941Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false,
+                "resendFiles": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:03:43.103Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false,
+                "resendFiles": false
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:07:25.257Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5-mini",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false,
+                "resendFiles": false
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:07:51.315Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5-mini",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false,
+                "resendFiles": false,
+                "verbosity": ""
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:27:45.081Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "low",
+                "disableStreaming": false,
+                "resendFiles": false,
+                "verbosity": ""
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:28:33.825Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (Claude)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "anthropic",
+            "model": "claude-sonnet-4-20250514",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "low",
+                "disableStreaming": false,
+                "resendFiles": false,
+                "verbosity": ""
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T13:21:03.672Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        }
+    ],
+    "createdAt": "2025-08-05T13:16:35.135Z",
+    "updatedAt": "2025-08-19T13:21:03.672Z",
+    "__v": 0,
+    "version": 38,
+    "isCollaborative": false,
+    "isPublic": false
+}{
+    "_id": "68920433721dc54bbc721d44",
+    "id": "agent_PG-0laChhaLvLaSOrqGX_",
+    "name": "KG Agent (Claude)",
+    "description": "",
+    "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+    "avatar": {
+        "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+        "source": "local"
+    },
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-20250514",
+    "model_parameters": {
+        "temperature": 1,
+        "useResponsesApi": true,
+        "reasoning_summary": "auto",
+        "reasoning_effort": "low",
+        "disableStreaming": false,
+        "resendFiles": false,
+        "verbosity": ""
+    },
+    "artifacts": "",
+    "recursion_limit": 100,
+    "tools": [
+        "sparqlQuery_mcp_graphdb",
+        "query_collection_mcp_qdrant"
+    ],
+    "tool_kwargs": [],
+    "actions": [],
+    "author": "688200f1c590f504d43c00f9",
+    "hide_sequential_outputs": false,
+    "end_after_tools": false,
+    "agent_ids": [],
+    "conversation_starters": [],
+    "projectIds": [],
+    "versions": [
+        {
+            "name": "KG Agent (8/5/25, 13:16)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\"\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "provider": "openAI",
+            "model": "o3",
+            "artifacts": "",
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_3Odpto6eWa-lehqnu1lt9-avatar-1753385795834.png?manual=false",
+                "source": "local"
+            },
+            "end_after_tools": false,
+            "hide_sequential_outputs": false,
+            "model_parameters": {
+                "temperature": 1
+            },
+            "recursion_limit": 50,
+            "id": "agent_PG-0laChhaLvLaSOrqGX_",
+            "actions": [],
+            "createdAt": "2025-08-05T13:16:35.134Z",
+            "updatedAt": "2025-08-05T13:16:35.134Z"
+        },
+        {
+            "name": "KG Agent (8/5/25, 13:16)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_3Odpto6eWa-lehqnu1lt9-avatar-1753385795834.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:32:32.718Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_3Odpto6eWa-lehqnu1lt9-avatar-1753385795834.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:33:50.325Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484064760.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:41:04.767Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484222057.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:43:42.062Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484443934.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:47:23.938Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:53:11.362Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\".\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T12:53:25.807Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. You can max do 10 tool calls before answering the user.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part.\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T13:05:40.753Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part.\n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T13:10:32.708Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T13:19:26.285Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-06T13:19:51.893Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:25:07.558Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:29:54.310Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5-mini",
+            "model_parameters": {
+                "temperature": 1
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:30:37.864Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 0,
+                "useResponsesApi": true
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:55:34.013Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:55:55.939Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:57:59.616Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5-mini",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T07:59:31.424Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-08T08:33:00.773Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754484791359.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-09T16:13:11.342Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-09T16:35:15.098Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-09T16:35:21.115Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T12:54:13.445Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high"
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T12:54:28.255Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": true
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T12:58:19.784Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o4-mini",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": true
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T13:05:39.722Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant. Never provide an answer unless you have retrieved supporting information from one of the available tools. Also, remember the user is a business user so even if all the facts are grounded in the knowledge graph, respond in a business language. Answer only the user's question. Be concise. Provide sources.\n\n- Use query_collection for similarity search to find starting points in the knowledge graph. The collection is called \"acme_knowledge_graph\" and is an indexed version of the TBox part of the triplestore, not the ABox part. This means that the actual facts are not in the index, just the structure of the facts. Therefore, search for base concepts one by one which can then be used in subsequent sparql queries to search for actual data. \n- For given IRIs make sparql queries to find out more, relations etc. This function you can use repeatedly to find the answer of the question. Calculations are captured as p-plan:Step referencing p-plan:Variables, which in turn reference classes using dc:Subject.\n\nCurrent Date: {{current_date}}",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": false,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T13:10:04.345Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\nWhere to look for numeric values\nThere are two standard patterns:\nDirect literal pattern\nClass-individual  →  data-property  →  literal\n\nVariable / p-plan pattern\np-plan:Variable  ← p-plan:hasInputVar / hasOutputVar  ← p-plan:Step\np-plan:Variable  dct:subject  →  Measure-class\nMeasure-class    rdf:type      →  one or more individuals (pattern #1)\n→ Retrieve the numeric literal from those individuals.\n\nRecommended workflow\na. From semantic search, collect candidate IRIs (banks, measures, variables, etc.).\nb. For each candidate IRI, first try pattern #1 with a focused SPARQL query.\nc. If it is a p-plan:Variable, follow dct:subject to the measure-class and apply pattern #1.\nd. Only if the path is unclear, run a shallow property-path or DESCRIBE (≤3 hops) to discover immediate neighbours; avoid large “*” expansions.\n\nAlways ensure that every numeric fact you use is backed by at least one SPARQL result returned in the conversation.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": false,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T18:26:35.092Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": false,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T19:10:42.802Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "o3",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-11T19:14:12.247Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "high",
+                "disableStreaming": false,
+                "resendFiles": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T11:55:16.941Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false,
+                "resendFiles": false
+            },
+            "artifacts": "",
+            "recursion_limit": 50,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:03:43.103Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false,
+                "resendFiles": false
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:07:25.257Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nTemplate for all neighbors:\n```sparql\nVALUES ?seed { <IRI SEED> }\n\nSELECT ?direction ?prop ?other\nWHERE {\n  { ?seed ?prop ?other                BIND(\"out\" AS ?direction) }\n  UNION\n  { ?other ?prop ?seed                BIND(\"in\"  AS ?direction) }\n}\nLIMIT 100\n```\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5-mini",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false,
+                "resendFiles": false
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:07:51.315Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5-mini",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "medium",
+                "disableStreaming": false,
+                "resendFiles": false,
+                "verbosity": ""
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:27:45.081Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (GPT-5)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "openAI",
+            "model": "gpt-5",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "low",
+                "disableStreaming": false,
+                "resendFiles": false,
+                "verbosity": ""
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T12:28:33.825Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        },
+        {
+            "name": "KG Agent (Claude)",
+            "description": "",
+            "instructions": "You are a cautious and reliable assistant.\nNever provide an answer unless you have retrieved supporting information from one of the available tools.\nThe user is a business user: keep the language business-oriented.\nAnswer only the user’s question, be concise, and cite your sources.\n\nTooling\n• Use query_collection_mcp_qdrant for semantic search.\n– Collection: “acme_knowledge_graph”.\n– It contains only the TBox (schema).\n– Search base concepts one by one; then use the IRIs returned as entry points for SPARQL.\n\n• Use sparqlQuery_mcp_graphdb to retrieve facts, relations and numeric values.\n\nWhen you have found an IRI of interest an effective way to find data and/or related concepts is to retrieve all the neighbors, inspect the result and then identify the next interesting IRI.\n\nData can be stored as an observation of the class or alternatively it may be calculated by finding the p-plan structure or variables (subject link), steps, inputs and their corresponding observations.",
+            "avatar": {
+                "filepath": "/images/688200f1c590f504d43c00f9/agent-agent_PG-0laChhaLvLaSOrqGX_-avatar-1754757315091.png?manual=false",
+                "source": "local"
+            },
+            "provider": "anthropic",
+            "model": "claude-sonnet-4-20250514",
+            "model_parameters": {
+                "temperature": 1,
+                "useResponsesApi": true,
+                "reasoning_summary": "auto",
+                "reasoning_effort": "low",
+                "disableStreaming": false,
+                "resendFiles": false,
+                "verbosity": ""
+            },
+            "artifacts": "",
+            "recursion_limit": 100,
+            "tools": [
+                "sparqlQuery_mcp_graphdb",
+                "query_collection_mcp_qdrant"
+            ],
+            "tool_kwargs": [],
+            "actions": [],
+            "hide_sequential_outputs": false,
+            "end_after_tools": false,
+            "agent_ids": [],
+            "conversation_starters": [],
+            "projectIds": [],
+            "createdAt": "2025-08-05T13:16:35.135Z",
+            "updatedAt": "2025-08-19T13:21:03.672Z",
+            "updatedBy": "688200f1c590f504d43c00f9"
+        }
+    ],
+    "createdAt": "2025-08-05T13:16:35.135Z",
+    "updatedAt": "2025-08-19T13:21:03.672Z",
+    "__v": 0,
+    "version": 38,
+    "isCollaborative": false,
+    "isPublic": false
+}
