@@ -88,7 +88,7 @@ User: Kan du beskriva hur den räknas ut?
 | 004   | UQ01  | SP07      | claude-sonnet-4-20250514 |              | 1.0  | true     |        | 2000    | 2   | 1   | 1   | 0   | 1   | 1   | 6    | Disaster in most aspects.                                                                                             |
 | 005   | UQ01  | SP06      | gpt-5                    | Yes          | 1.0  | true     | high   |         | -   | -   | -   | -   | -   | -   | -    | Didn't complete, because other issues. Was slow.                                                                      |
 | 006   | UQ01  | SP08      | claude-sonnet-4-20250514 |              | 1.0  | true     |        | 2000    | -   | -   | -   | -   | -   | -   | -    |                                                                                                                       |
-| 007   | UQ01  | SP08      | claude-sonnet-4-20250514 |              | 1.0  | true     |        | 10000   | -   | -   | -   | -   | -   | -   | -    |                                                                                                                       |
+| 007   | UQ01  | SP08      | claude-sonnet-4-5-20250929 |              | 1.0  | true     |        | 10000   | -   | -   | -   | -   | -   | -   | -    |                                                                                                                       |
 
 ## System prompts
 ### SP01
